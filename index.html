@@ -1,0 +1,122 @@
+<!doctype html>
+<html lang="id">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Halo Youpii</title>
+  <style>
+    :root { color-scheme: light; }
+    * { box-sizing: border-box; }
+
+    body{
+      margin:0; min-height:100vh; display:grid; place-items:center;
+      font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+      background: radial-gradient(circle at top, #f8b0d7, #ff7ea5);
+      color:#111;
+      padding: 18px;
+    }
+
+    .card{
+      width:min(720px, 92vw);
+      padding:28px 24px;
+      border:1px solid rgba(0,0,0,.08);
+      border-radius:18px;
+      background: rgba(255,255,255,.85);
+      box-shadow: 0 10px 30px rgba(0,0,0,.08);
+      backdrop-filter: blur(6px);
+      text-align: center;
+      animation: pop .35s ease-out;
+    }
+
+    h1{ margin:0 0 10px; font-size:32px; letter-spacing:.2px; }
+    p{ margin:0; font-size:16px; line-height:1.6; opacity:.9; }
+
+    .btn{
+      margin-top:18px;
+      display:inline-flex; align-items:center; justify-content:center;
+      padding:12px 16px;
+      border-radius:12px;
+      border:1px solid rgba(0,0,0,.1);
+      background:#fff;
+      font-size:16px;
+      text-decoration:none;
+      color:#111;
+      cursor:pointer;
+      transition: transform .12s ease, box-shadow .12s ease;
+    }
+    .btn:hover{ transform: translateY(-1px); box-shadow: 0 8px 18px rgba(0,0,0,.08); }
+    .btn:active{ transform: translateY(0px); box-shadow: none; }
+
+    .input-container {
+      margin-top: 20px;
+      display: flex;
+      gap: 10px;
+      justify-content: center;
+    }
+
+    .input-container div {
+      text-align: center;
+    }
+
+    .input-container label {
+      font-size: 16px;
+      font-weight: bold;
+      display: block;
+      margin-bottom: 5px;
+    }
+
+    .input-container input {
+      padding: 10px;
+      font-size: 16px;
+      border-radius: 8px;
+      border: 1px solid #ecc2e7;
+      width: 65px; /* Ukuran input diperpendek untuk 3 digit */
+      text-align: center; /* Agar angka rata tengah */
+    }
+
+    @keyframes pop {
+      from { transform: translateY(6px); opacity: .0; }
+      to   { transform: translateY(0px); opacity: 1; }
+    }
+  </style>
+</head>
+<body>
+  <main class="card">
+    <h1>Halo Youpii...</h1>
+    <p>Dibuka dan dibaca yaa...</p>
+    <p>Kalo memang gamau dibuka juga gapapaa.</p>
+    <p>Oiyaa.. buat passwordnya pake tgl ama bulan lahirmu yaa..</p>
+
+    <!-- Form untuk password tanggal dan bulan -->
+    <div class="input-container">
+      <div>
+        <label for="day">Tgl</label>
+        <input type="number" id="day" placeholder="(**)" min="1" max="31" />
+      </div>
+      <div>
+        <label for="month">Bln</label>
+        <input type="number" id="month" placeholder="(**)" min="1" max="12" />
+      </div>
+    </div>
+
+    <button class="btn" onclick="checkPassword()">Lanjutkan</button>
+
+    <p id="error-message" style="color: red; display: none;">Password salah. Coba lagi.</p>
+  </main>
+
+  <script>
+    function checkPassword() {
+      const day = document.getElementById("day").value;
+      const month = document.getElementById("month").value;
+      const correctDay = "11"; // Tanggal lahir Youpii
+      const correctMonth = "11"; // Bulan lahir Youpii
+
+      if (day === correctDay && month === correctMonth) {
+        window.location.href = "pesan-1.html"; // Redirect ke halaman pesan 1
+      } else {
+        document.getElementById("error-message").style.display = "block"; // Tampilkan pesan error
+      }
+    }
+  </script>
+</body>
+</html>
